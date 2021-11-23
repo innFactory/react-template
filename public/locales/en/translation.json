@@ -1,0 +1,31 @@
+{
+	"languages": {
+		"german": "German",
+		"english": "English"
+	},
+	"drawer": {
+		"home": "Home",
+		"favorite": "Favorites",
+		"restricted": "Restricted"
+	},
+	"home": {
+		"completedLabel": "Completed todos"
+	},
+	"todo": {
+		"loading": "Please wait...",
+		"table": {
+			"header": {
+				"id": "ID",
+				"title": "Title",
+				"completed": "Completed"
+			}
+		},
+		"numberOfTodos": "Number of todos"
+	},
+	"login": {
+		"title": "Login"
+	},
+	"notFoundPage": {
+		"text": "404 Page Not Found"
+	}
+}
