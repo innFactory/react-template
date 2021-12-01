@@ -27,13 +27,19 @@ export const todoApi: TodoApi = {
 			mutate: jest.fn(),
 		};
 	},
-	useCreateTodo: function (): void {
-		// do something
+	useCreateTodo: () => {
+		return (_todo: Todo): Promise<Todo> => {
+			throw Error('not implemented');
+		};
 	},
-	useBulkCreateTodos: function (): void {
-		// do something
+	useBulkCreateTodos: () => {
+		return (_todos: Todo[]): Promise<Todo[]> => {
+			throw Error('not implemented');
+		};
 	},
-	useUpdateTodo: function (): void {
-		// do something
+	useUpdateTodo: () => {
+		return (_todo: Todo): Promise<Todo> => {
+			throw Error('not implemented');
+		};
 	},
 };

@@ -1,4 +1,4 @@
-import useSWR, { SWRResponse } from 'swr';
+import useSWR, { SWRResponse, useSWRConfig } from 'swr';
 import { API_URL } from '../../../common/constants';
 import { defaultFetcher } from '../../../common/fetcher';
 import { Todo } from '../models/todo';
@@ -8,12 +8,16 @@ export interface TodoQuery {
 	compledted?: boolean;
 }
 
+type CreateTodoHook = (todo: Todo) => Promise<Todo>;
+type BulkCreateTodoHook = (todos: Todo[]) => Promise<Todo[]>;
+type UpdateTodoHook = (todo: Todo) => Promise<Todo>;
+
 export interface TodoApi {
 	useRequestTodo(id: string): SWRResponse<Todo, Error>;
 	useRequestManyTodos(query?: TodoQuery): SWRResponse<Todo[], Error>;
-	useCreateTodo(): void;
-	useBulkCreateTodos(): void;
-	useUpdateTodo(): void;
+	useCreateTodo: () => CreateTodoHook;
+	useBulkCreateTodos: () => BulkCreateTodoHook;
+	useUpdateTodo: () => UpdateTodoHook;
 }
 
 export const todoApi: TodoApi = {
@@ -27,17 +31,29 @@ export const todoApi: TodoApi = {
 		);
 	},
 	useCreateTodo: () => {
-		return (_todo: Todo): void => {
-			throw Error('not implemented');
+		const { mutate } = useSWRConfig();
+
+		return async (todo: Todo): Promise<Todo> => {
+			const response = await fetch(`${API_URL}/todos`, {
+				method: 'POST',
+				body: JSON.stringify(todo),
+				headers: {
+					'Content-type': 'application/json; charset=UTF-8',
+				},
+			});
+
+			mutate(`${API_URL}/todos`);
+
+			return response.json();
 		};
 	},
 	useBulkCreateTodos: () => {
-		return (_todos: Todo[]): void => {
+		return (_todos: Todo[]): Promise<Todo[]> => {
 			throw Error('not implemented');
 		};
 	},
 	useUpdateTodo: () => {
-		return (_todo: Todo): void => {
+		return (_todo: Todo): Promise<Todo> => {
 			throw Error('not implemented');
 		};
 	},

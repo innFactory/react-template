@@ -14,6 +14,7 @@
 -   [react-typesafe-routes](https://github.com/innFactory/react-typesafe-routes)
 -   [react-error-boundary](https://github.com/bvaughn/react-error-boundary)
 -   [i18next](https://github.com/i18next/i18next)
+-   [Notistack](https://github.com/iamhosseindhv/notistack)
 -   [Storybook](https://github.com/storybookjs/storybook)
 -   [Typescript](https://github.com/microsoft/TypeScript)
 

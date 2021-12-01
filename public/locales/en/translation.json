@@ -20,7 +20,19 @@
 				"completed": "Completed"
 			}
 		},
-		"numberOfTodos": "Number of todos"
+		"numberOfTodos": "Number of todos",
+		"summary": {
+			"add": "Add todo"
+		},
+		"addTodoDialog": {
+			"title": "Add todo",
+			"cancel": "Cancel",
+			"save": "Save",
+			"successMessage": "Todo has been added successfully!"
+		},
+		"addTodoForm": {
+			"titleLabel": "Title"
+		}
 	},
 	"login": {
 		"title": "Login"
