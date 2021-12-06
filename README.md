@@ -186,6 +186,24 @@ This method involes changing the Storybook webpack configuration. It should only
 Open `.storybook\main.ts` and navigate to the "alias" section of the webpack configuration. Add a new alias with the exact import path.  
 Place the mock in `src\stories\mocks`.
 
+## User Notifcations
+
+```ts
+const { enqueueSnackbar } = useSnackbar();
+```
+
+Success:
+
+```ts
+enqueueSnackbar('message', { variant: 'success' });
+```
+
+Error:
+
+```ts
+enqueueSnackbar('message', { variant: 'error' });
+```
+
 ## Error Handling
 
 Exceptions during rendering of pages are automatically catched by an error boundary. An Error Fallback Page is shown. However, error boundaries do not work in event handlers (onClick, ...).
