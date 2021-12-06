@@ -186,7 +186,7 @@ This method involes changing the Storybook webpack configuration. It should only
 Open `.storybook\main.ts` and navigate to the "alias" section of the webpack configuration. Add a new alias with the exact import path.  
 Place the mock in `src\stories\mocks`.
 
-## User Notifcations
+## User Notifications
 
 ```ts
 const { enqueueSnackbar } = useSnackbar();
