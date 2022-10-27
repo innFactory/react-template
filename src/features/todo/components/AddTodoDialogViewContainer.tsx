@@ -6,7 +6,10 @@ import { useSnackbar } from 'notistack';
 import { useErrorHandler } from 'react-error-boundary';
 import { useTranslation } from 'react-i18next';
 
-type AddTodoDialogViewContainerProps = Omit<AddTodoDialogProps, 'onSave'>;
+export type AddTodoDialogViewContainerProps = Omit<
+	AddTodoDialogProps,
+	'onSave'
+>;
 
 const AddTodoDialogViewContainer: React.FC<AddTodoDialogViewContainerProps> = (
 	props
