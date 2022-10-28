@@ -15,7 +15,6 @@
 -   [react-error-boundary](https://github.com/bvaughn/react-error-boundary)
 -   [i18next](https://github.com/i18next/i18next)
 -   [Notistack](https://github.com/iamhosseindhv/notistack)
--   [Storybook](https://github.com/storybookjs/storybook)
 -   [Typescript](https://github.com/microsoft/TypeScript)
 
 ## Getting Started
@@ -34,14 +33,6 @@ npm install
 
 ```batch
 npm start
-```
-
-### Storybook
-
-1. Run Storybook
-
-```batch
-npm run storybook
 ```
 
 2. Explore existing components
@@ -84,11 +75,6 @@ The `common` folder contains global configuration and should only be used sparin
     │   │   │   ├── apis            # All apis related to todos
     │   │   │   ├── services        # All servcies related to todos
     │   │   │   ├── models          # All models related to todos
-    │   ├── stories                 # All storybook stories
-    │   │   ├── components          # Stories for single components
-    │   │   ├── composites          # Stories for composed components
-    │   │   ├── pages               # Stories for pages
-    │   │   ├── mocks               # Mock components (see section "Mocking in Storybook")
     ├── ...
     └── README.md
 
@@ -115,13 +101,9 @@ Presentational components are ordinary react components but they should not acce
 All state in presentiational components must be self contained or passed in from View-Containers through props.
 Presentational components should be named without suffix.
 
-> Write stories for major presentational components
-
 View-Containers are stateful react components without any DOM markup and styles. They are providers of data and behaviour to presentational components.
 Only View-Containers or services should access external state like data fetching or recoil atoms.  
 View-Containers should be named `{name}ViewContainer`.
-
-> Do not write stories for View-Container components
 
 ## Styling
 
@@ -144,47 +126,6 @@ const StyledDiv = styled('div')(({ theme }) => ({
 	padding: theme.spacing(1),
 }));
 ```
-
-## Storybook
-
-### Mocking in Storybook
-
-Presentational components should work without mocking in Storybook. However, if a presentational "pure" component embeds a View-Container component
-then mocking is required.
-
-> There is no test environment available in Storybook, therefore Jest cannot be used as a mocking library.
-
-There are two alternate ways to mock a component:
-
-1. <b>Using MockUtil (preferred):</b>
-
-Open the View-Container component you want to mock. Make sure the component is default exported using the `withApplyMockInStorybook` higher order component.
-
-```js
-export default withApplyMockInStorybook(MyComponentViewContainer);
-```
-
-Now each time this component is loaded in Storybook an placeholder appears.  
-The placeholder can be replaced with an custom mock implementation.  
-For this purpose, create a new file `{ComponentName}Mock.tsx` in `src\stories\mocks`.
-
-Content of mock file (example):
-
-```js
-import { mockComponent } from '../../features/app/components/MockUtil';
-
-mockComponent(MyComponentViewContainer, (props) => {
-	return <MyComponent someProp="value" anotherProp="..." />;
-});
-```
-
-**Open `src\stories\mocks\index.tsx` and import your mock file**. Restart Storybook. The mock component should be used now.
-
-2. <b>Using webpack aliases:</b>
-
-This method involes changing the Storybook webpack configuration. It should only be done in exceptional cases, prefer method (1).  
-Open `.storybook\main.ts` and navigate to the "alias" section of the webpack configuration. Add a new alias with the exact import path.  
-Place the mock in `src\stories\mocks`.
 
 ## User Notifications
 

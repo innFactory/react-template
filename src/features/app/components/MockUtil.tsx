@@ -15,7 +15,7 @@ const Placeholder: React.FC<PlaceholderProps> = ({ name }) => (
 	<Alert severity="warning">No mock implementation found for {name}.</Alert>
 );
 
-export const withApplyMockInStorybook = <T,>(
+export const withApplyMockInStorybook = <T extends {}>(
 	WrappedComponent: React.FC<T>
 ): React.FC<T> => {
 	if (!isRunningInStorybook()) return WrappedComponent;

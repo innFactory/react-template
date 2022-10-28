@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { RecoilRoot } from 'recoil';
 import { reportWebVitals } from './reportWebVitals';
 import isoCountries from 'i18n-iso-countries';
@@ -14,16 +13,18 @@ import '@fontsource/comfortaa/400.css';
 import '@fontsource/comfortaa/500.css';
 import '@fontsource/comfortaa/700.css';
 import './common/i18n';
+import { createRoot } from 'react-dom/client';
 
 isoCountries.registerLocale(isoDeLocale);
-
-ReactDOM.render(
+const container = document.getElementById('root');
+// eslint-disable-next-line
+const root = createRoot(container!); // createRoot(container!) if you use TypeScript
+root.render(
 	<React.StrictMode>
 		<RecoilRoot>
 			<Root />
 		</RecoilRoot>
-	</React.StrictMode>,
-	document.getElementById('root')
+	</React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

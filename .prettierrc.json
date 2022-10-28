@@ -3,5 +3,27 @@
 	"tabWidth": 4,
 	"useTabs": true,
 	"jsxSingleQuote": false,
-	"trailingComma": "es5"
+	"trailingComma": "es5",
+	"prettier.tslintIntegration": true,
+	"overrides": [
+		{
+			"files": "*.yml",
+			"options": {
+				"tabWidth": 2
+			}
+		},
+		{
+			"files": "*.yaml",
+			"options": {
+				"tabWidth": 2
+			}
+		},
+		{
+			"files": "*.json",
+			"options": {
+				"tabWidth": 2,
+				"useTabs": false
+			}
+		}
+	]
 }
