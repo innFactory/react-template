@@ -1,12 +1,10 @@
-import { RouteMiddleware } from 'react-typesafe-routes';
-import { useLocation, Redirect } from 'react-router-dom';
+import { Redirect, RouteMiddleware } from 'react-typesafe-routes';
 import { useRecoilValue } from 'recoil';
 import currentUserState from '../currentUserState';
 import router from '../../../Router';
 
 const AuthMiddleware: RouteMiddleware = (next) => {
 	const currentUser = useRecoilValue(currentUserState);
-	const location = useLocation();
 
 	if (currentUser) {
 		return next;
@@ -14,8 +12,7 @@ const AuthMiddleware: RouteMiddleware = (next) => {
 		return () => (
 			<Redirect
 				to={{
-					pathname: router.login().$,
-					state: { refer: location.pathname },
+					$: router.login().$,
 				}}
 			/>
 		);

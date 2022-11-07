@@ -8,7 +8,7 @@ import router from '../../../Router';
 import Login from './Login';
 
 const useRefer = () => {
-	const location = useLocation<{ refer?: string }>();
+	const location = useLocation();
 
 	if (!location.state?.refer) {
 		return router.home();

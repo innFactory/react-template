@@ -9,10 +9,10 @@ import MuiDrawer from '@mui/material/Drawer';
 import HomeIcon from '@mui/icons-material/Home';
 import FavoritesIcon from '@mui/icons-material/Star';
 import LockIcon from '@mui/icons-material/Lock';
-import { useHistory } from 'react-router-dom';
 import { useRoutesActive } from 'react-typesafe-routes';
 import { useTranslation } from 'react-i18next';
 import router from '../../../Router';
+import { useNavigate } from 'react-router-dom';
 
 interface DrawerProps {
 	open: boolean;
@@ -20,7 +20,7 @@ interface DrawerProps {
 }
 
 const Drawer: React.FC<DrawerProps> = ({ open, onClose }) => {
-	const history = useHistory();
+	const navigate = useNavigate();
 	const { home, favorites, restricted } = useRoutesActive({
 		home: router.home,
 		favorites: router.favorites,
@@ -29,17 +29,17 @@ const Drawer: React.FC<DrawerProps> = ({ open, onClose }) => {
 	const { t } = useTranslation();
 
 	const onHomeClick = () => {
-		history.push(router.home().$);
+		navigate(router.home().$);
 		onClose();
 	};
 
 	const onFavoritesClick = () => {
-		history.push(router.favorites().$);
+		navigate(router.favorites().$);
 		onClose();
 	};
 
 	const onRestrictedClick = () => {
-		history.push(router.restricted().$);
+		navigate(router.restricted().$);
 		onClose();
 	};
 
